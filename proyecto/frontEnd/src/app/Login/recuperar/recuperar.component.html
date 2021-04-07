@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <br>
+    <br/>
+    <br>
+    <p><strong>
+        <h1>
+            Cambio de Contraseña
+        </h1>
+    </strong></p>
+    <br>
+    <br/>
+    <br>
+    <br>
+    <br/>
+    <div id="contain">
+      <form #form="ngForm" (ngSubmit)="Recuperar(form)">
+        <div class="component"><label><strong>Carne:</strong></label><br /><input [(ngModel)]="carne" name="carne" class="TextBox"></div>
+        <br />
+        <div class="component"><label><strong>Correo:</strong></label><br /><input [(ngModel)]="correo" name="correo" class="TextBox"></div>
+        <br />
+        <div>
+          <button type="submit">
+            <strong>
+              Recuperar
+            </strong>
+          </button>
+        </div>
+      </form>
+      <br />
+      
+    </div>
+   
+</body>
+</html>

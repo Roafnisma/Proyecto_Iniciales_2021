@@ -1,0 +1,15 @@
+<div class="container"><table class="table table-striped">
+    <tr *ngFor="let publicacion of publicaciones">
+        <tbody>
+            <td>
+                
+                <label>Usuario: {{publicacion.Usuario_Carnet}}</label>
+                <div>Catedratico: {{publicacion.Catedratico_NoCatedratico}}</div>
+                <p> {{publicacion.Mensaje}}</p>
+                <button (click)="verComentarios(publicacion.idPublicacion,publicacion.Catedratico_NoCatedratico,publicacion.Mensaje,publicacion.Usuario_Carnet)">Ver Comentarios</button>
+            </td>
+        </tbody>
+    </tr>
+</table>
+<a href="/pantallaPrincipal">Pantalla principal</a>
+</div>

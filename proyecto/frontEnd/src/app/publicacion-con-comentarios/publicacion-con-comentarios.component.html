@@ -1,0 +1,31 @@
+
+<div *ngFor= "let usuario of usuarios">Usuario: {{usuario.Nombres}}</div>
+
+<div *ngFor= "let catedratico of catedraticos">Catedratico: {{catedratico.Nombres}}</div>
+
+<div>Publicacion:{{mensaje}}</div>
+
+<div>
+    <textarea id="cuerpo" [(ngModel)]="cuerpo" name="cuerpo">{{cuerpo}}</textarea>
+
+</div>
+<button (click)="guardarComentario(cuerpo)">Comentar</button>
+<button (click)="verPerfil()">Ver Perfil</button>
+
+<h4>Comentarios</h4>
+<div class="container"><table class="table table-striped">
+    <tr *ngFor="let comentario of comentarios">
+        <tbody>
+            <td>
+                <label>Usuario: {{comentario.Usuario_Carnet}}</label>
+                
+                <p> {{comentario.Mensaje}}</p>
+                 </td>
+        </tbody>
+    </tr>
+</table>
+
+
+
+<a href="/publicaciones">Regresar</a>
+</div>

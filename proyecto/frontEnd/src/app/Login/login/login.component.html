@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="login.component.css">
+</head>
+<body>
+ 
+    <br>
+    <br/><div id="contain">
+           <br />
+           <div id="imagen">
+             <img src="https://image.flaticon.com/icons/png/512/74/74235.png" alt="Login" id="imagen1"/>
+           </div>
+           <br />
+  <form #form="ngForm" (ngSubmit)="iniciarSesion(form)">
+    <div class="component"><label><strong>Carne:</strong></label> <br /><input [(ngModel)]="carne" name="carne" class="TextBox"></div>
+    <br />
+    <div class="component"><label><strong>Contraseña:</strong></label> <br /><input [(ngModel)]="password" type="password" name="password" class="TextBox"></div>
+    <br />
+    <div class="component1">
+      <button type="submit">
+        <strong>Ingresar</strong>
+      </button>
+    </div>
+  </form>
+  <br />
+  <form (ngSubmit)="cambiarComponente()">
+    <div class="component2">
+      <button type="submit">
+        <strong>
+          Registrarse
+        </strong>
+      </button>
+    </div>
+  </form>
+  <br />
+  <form #form2="ngForm" (ngSubmit)="cambiarARecuperarPassword()">
+    <div class="component3">
+      <button type="submit">
+        <strong>
+          Olvido su contraseña?
+        </strong>
+      </button>
+    </div>
+  </form>
+  <br />
+</div>
+         <br /> 
+</body>
+</html>
+

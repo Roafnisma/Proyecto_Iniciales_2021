@@ -1,0 +1,21 @@
+<link href="publicacion.component.css">
+<body>
+
+  <div *ngFor="let usuario of usuarios"><label>Usuario: {{usuario.Nombres}}</label></div>
+  <div id="catedratico">
+    <label id="labelcatedratico">Catedratico:{{Nombres}} {{Apellidos}} </label>
+
+  </div>
+  <div id="imagen">
+    <img src="https://www.acesea.es/wp-content/uploads/2017/08/icono_publicaciones.png" alt="Login" id="imagen1" />
+  </div>
+  <br />
+  <div id="TextBox">
+
+    <textarea id="cuerpo" [(ngModel)]="cuerpo" name="cuerpo" placeholder="Escribe algo sobre {{Nombres}} {{Apellidos}}">{{cuerpo}}</textarea>
+
+  </div>
+  <br />
+  <button (click)="guardarPublicacion(cuerpo)">Publicar</button>
+  <div id="pantallaprincipal"><a href="pantallaPrincipal" id="letras">Pantalla Principal</a></div>
+</body>

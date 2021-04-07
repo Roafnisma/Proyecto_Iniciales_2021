@@ -1,0 +1,32 @@
+<div class="container">
+    <a href="/pantallaPrincipal">Regresar</a>
+        
+    <div class="row">
+      <div class="col1">
+        <div class="form-group">
+          <input type="text" class="form-control" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let curso of cursos | filtroCurso:filterPost">
+              <td>{{curso.CodigoCurso}}</td>
+              <td>{{curso.Nombre}}</td>
+              <td><button (click)="publicar(catedratico.NoCatedratico,catedratico.Nombres,catedratico.Apellidos)">Publicar</button></td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

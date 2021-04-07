@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css">
+</head>
+<body>
+    
+    <div>
+        
+            <strong>
+                
+                <p>
+                    Pantalla Principal
+                </p>
+                
+                <div>
+                <a href="/publicaciones">Publicaciones</a>
+                <a href="/perfil">Perfil</a>
+                </div>
+                <div><label>Carne:{{carne}}</label></div>
+                <a href="/">Salir</a>
+                <a href="/buscarCurso">Buscar por curso</a>
+                
+                
+            </strong>
+            
+        </div>
+        
+
+        <!--<input [(ngModel)]="curso" name="curso" size="40">
+
+    <div>
+        <form>
+            <h4>
+                <input type="radio" name="cursos">Catedratico<br>
+                <input type="radio" name="cursos" checked>Curso<br>
+            </h4>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <button type="submit" id="boton"><strong>Buscar</strong></button>
+        </form>
+    </div>-->
+
+
+    <div>
+        
+        <form>
+            <h3>
+                <strong>Crea tu Publicación</strong>
+            </h3>
+        </form>
+        
+    </div>
+    <div>
+        <form>
+            <h4>
+                <strong>Tipo de Publicación</strong>
+            </h4>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <h4>
+                <input type="radio" name="cursos">Catedratico<br>
+                <!--<input (click)="buscarCursos()" type="radio" name="cursos">Curso<br>-->
+                <input type="radio" name="cursos" checked>Catedratico de un Curso<br>
+            </h4>
+        </form>
+    </div>
+
+    <!--comienza ejemplo de filtro-->
+
+    <div class="container">
+        
+        <div class="row">
+          <div class="col1">
+            <div class="form-group">
+              <input type="text" class="form-control" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let catedratico of catedraticos | filtro:filterPost">
+                  <td>{{catedratico.Nombres}}</td>
+                  <td>{{catedratico.Apellidos}}</td>
+                  <td><button (click)="publicar(catedratico.NoCatedratico,catedratico.Nombres,catedratico.Apellidos)">Publicar</button></td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+     
+
+    <!--termina el ejemplo-->
+
+   <!---- <table>
+        <th>Nombre</th>
+        <th>Accion</th>
+        <tr *ngFor="let catedratico of catedraticos">
+            <td>{{catedratico.Nombres}}</td>
+        </tr>
+        
+    </table>
+
+    <div>
+        <form>
+            <h4>
+                <select name="select" style="width:500px;">
+                        <option *ngFor="let catedratico of catedraticos">
+                            {{catedratico.Nombres}}
+                        </option>
+                </select>
+            </h4>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <h4>
+                <textarea style="width: 500px; height: 100px;"></textarea>
+            </h4>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <button type="submit" id="boton1">
+                <strong>Publicar</strong>
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <button type="submit" id="boton2">
+                <strong>Cancelar</strong>
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <h4>
+                Publicaciones
+            </h4>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <textarea style="width: 1300px; height: 300px;"></textarea>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <button type="submit" id="boton3">
+                <strong>Ver Comentarios</strong>
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <button type="submit" id="boton4">
+                <strong>Ver Perfil</strong>
+            </button>
+        </form>
+    </div>
+
+    <div>
+        <form>
+            <button type="submit" id="boton5">
+                <strong>Dejar Comentario</strong>
+            </button>
+        </form>
+    </div>
+
+    <form (ngSubmit)="salir()">
+        <button type="submit">Salir</button>
+    </form>-->
+
+    <!--li *ngFor="let usuario of usuarios">
+        <p>Titulo: {{usuario.Nombres}}</p>-->
+        <!--<p>Año: {{peli["anio"]}}</p>-->
+
+</body>
+</html>

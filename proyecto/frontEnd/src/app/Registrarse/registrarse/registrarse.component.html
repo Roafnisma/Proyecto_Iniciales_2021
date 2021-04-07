@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="registrarse.component.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <p>Registro</p>
+    <form #form="ngForm" (ngSubmit)="registrarUsuario(form)">
+      <div id="contain">
+       
+        <br />
+        <div class="component"><label> Carne:</label><br /><input [(ngModel)]="carne" name="carne" class="TextBox"></div>
+        <br />
+        <div class="component"><label> Nombres:</label><br /><input [(ngModel)]="nombres" name="nombres" class="TextBox"></div>
+        <br />
+        <div class="component"><label> Apellidos:</label><br /><input [(ngModel)]="apellidos" name="apellidos" class="TextBox"></div>
+        <br />
+        <div class="component"><label> Correo electronico:</label><br /><input [(ngModel)]="correo" name="correo" class="TextBox"></div>
+        <br />
+        <div class="component"><label> Contraseña:</label><br /><input [(ngModel)]="password" type="password" name="password" class="TextBox"></div>
+        <br />
+        <div class="component">
+
+          <button type="submit">
+            Registrarse
+          </button>
+        </div>
+        <br />
+      </div>
+    </form>
+    <br>
+    <br/>
+    <br>
+    <br/>
+    <br>
+    <br/> 
+
+</body>
+
+</html>

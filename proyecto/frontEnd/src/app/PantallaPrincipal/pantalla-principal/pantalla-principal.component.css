@@ -1,0 +1,128 @@
+button {
+    background-color: deepskyblue;
+    margin-bottom: 18px;
+    font-family: "Consolas", monospace;
+    font-size: 16px;
+    border-color: cornflowerblue;
+    border-width: 4px;
+    border-style: solid;
+    -webkit-text-stroke: 1.5px cornflowerblue;
+    color: white;
+}
+
+p {
+  font-size: large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: rgb(53, 95, 158);
+  color:white;
+  font-size: 40px;
+  font-weight: normal;
+    
+}
+
+a {
+    font-family: "Consolas", monospace;
+    font-size: 25px;
+    color:cornflowerblue;
+    padding: 10px;
+}
+
+label {
+    font-family: "Consolas", monospace;
+    font-size: x-large;
+    font-size: 25px;
+    margin-left: 10px;
+    color: rgb(53, 95, 158);
+}
+
+body {
+  background-image: url(https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+input {
+    background-color: white;
+    font-family: "Consolas", monospace;
+    font-size: 20px;
+    color: rgb(53, 95, 158);
+}
+
+h3 {
+    font-family: "Consolas", monospace;
+    font-size: x-large;
+    font-size: 30px;
+    color: white;
+    background-color: rgb(53, 95, 158);
+    text-align: center;
+}
+
+h4 {
+    font-family: "Consolas", monospace;
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    margin-left: 130px;
+}
+
+table {
+    font-family: "Consolas", monospace;
+    font-size: 20px;
+    color: white;
+    
+}
+
+#boton {
+    left: 200px;
+    top: 130px;
+    position: absolute;
+}
+
+#boton1 {
+    left: 600px;
+    top: 420px;
+    position: absolute;
+}
+
+#boton2 {
+    left: 800px;
+    top: 420px;
+    position: absolute;
+}
+
+#boton3 {
+    left: 800px;
+    top: 520px;
+    position: absolute;
+}
+
+#boton4 {
+    left: 1000px;
+    top: 520px;
+    position: absolute;
+}
+
+#boton5 {
+    left: 1150px;
+    top: 520px;
+    position: absolute;
+}
+
+textarea {
+    
+    resize: none;
+}
+.col {
+    position:relative;
+
+ height:300px;
+  overflow: auto;
+}
+.col1 {
+    width:100%;
+}

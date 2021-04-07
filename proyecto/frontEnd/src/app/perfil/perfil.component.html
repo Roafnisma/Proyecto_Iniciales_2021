@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css">
+</head>
+<body>
+    
+    <div *ngFor="let usuario of usuarios">
+        
+        
+                
+                <p>
+                    Perfil de usuario
+                </p>
+                <a href="/pantallaPrincipal">Pantalla Principal</a>
+                <div><label>Nombre:{{usuario.Nombres}} </label></div>
+                <div><label>Apellido:{{usuario.Apellidos}} </label></div>
+                <div><label>Correo:{{usuario.Correo}} </label></div>
+                
+                
+            
+            
+        </div>
+        <div>
+            <label>Cursos Aprobados:</label>
+        </div>
+        <div class="container"><table class="table table-striped">
+            <tr>
+                <tbody>
+                    <td>
+                        <label>Curso: </label>
+                        <label>Puntuacion: </label>
+                        
+                    </td>
+                </tbody>
+            </tr>
+        </table>
+        </div>
+
+        
+</body>
+</html>        
