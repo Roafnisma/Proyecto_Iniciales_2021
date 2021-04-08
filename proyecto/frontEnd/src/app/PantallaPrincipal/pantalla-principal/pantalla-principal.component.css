@@ -1,12 +1,9 @@
 button {
-    background-color: deepskyblue;
+    background-color: #3a4d6d;
     margin-bottom: 18px;
     font-family: "Consolas", monospace;
-    font-size: 16px;
-    border-color: cornflowerblue;
-    border-width: 4px;
+    font-size: 20px;
     border-style: solid;
-    -webkit-text-stroke: 1.5px cornflowerblue;
     color: white;
 }
 
@@ -27,6 +24,13 @@ a {
     padding: 10px;
 }
 
+a2 {
+    font-family: "Consolas", monospace;
+    font-size: 25px;
+    color:cornflowerblue;
+    margin-left: 1200px;
+}
+
 label {
     font-family: "Consolas", monospace;
     font-size: x-large;
@@ -36,7 +40,7 @@ label {
 }
 
 body {
-  background-image: url(https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80);
+  background-image: url(https://i.pinimg.com/originals/b8/c7/2e/b8c72e052046e520c9852415c53406af.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -11,14 +11,15 @@ p {
     font-family: "Consolas", monospace;
     font-size: x-large;
     font-size: 20px;
-    color: black;
+    color: rgb(248, 239, 239);
     margin-left: 10px;
 }
 a {
     font-family: "Consolas", monospace;
     font-size: 25px;
     color:cornflowerblue;
-    margin-left: 10px;
+    margin-left: 1200px;
+    left:75%;
 }
 
 body {
@@ -26,7 +27,7 @@ body {
     image-orientation: inherit;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(https://images.unsplash.com/photo-1510843572979-e4b9e790fdd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1393&q=80);
+    background-image: url(https://www.solucioneshipermedia.com/wp-content/uploads/programacion-de-diseno-web-1024x576.jpg);
     background-size: cover;
 
 }

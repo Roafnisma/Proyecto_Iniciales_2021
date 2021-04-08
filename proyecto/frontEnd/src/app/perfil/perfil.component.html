@@ -8,13 +8,13 @@
 <body>
     
     <div *ngFor="let usuario of usuarios">
-        
-        
-                
                 <p>
                     Perfil de usuario
                 </p>
-                <a href="/pantallaPrincipal">Pantalla Principal</a>
+                <div>
+                    <a href="/pantallaPrincipal">Pantalla Principal</a>
+                </div>
+                
                 <div><label>Nombre:{{usuario.Nombres}} </label></div>
                 <div><label>Apellido:{{usuario.Apellidos}} </label></div>
                 <div><label>Correo:{{usuario.Correo}} </label></div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="login.component.css">
+    
 </head>
 <body>
  
@@ -11,16 +12,16 @@
     <br/><div id="contain">
            <br />
            <div id="imagen">
-             <img src="https://image.flaticon.com/icons/png/512/74/74235.png" alt="Login" id="imagen1"/>
+             <img src="https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_960_720.png" alt="Login" id="imagen1"/>
            </div>
            <br />
   <form #form="ngForm" (ngSubmit)="iniciarSesion(form)">
-    <div class="component"><label><strong>Carne:</strong></label> <br /><input [(ngModel)]="carne" name="carne" class="TextBox"></div>
+    <div class="component"><label><strong>Carnet:</strong></label> <br /><input [(ngModel)]="carne" name="carne" class="TextBox"></div>
     <br />
     <div class="component"><label><strong>Contraseña:</strong></label> <br /><input [(ngModel)]="password" type="password" name="password" class="TextBox"></div>
     <br />
     <div class="component1">
-      <button type="submit">
+      <button type="submit" >
         <strong>Ingresar</strong>
       </button>
     </div>
@@ -40,7 +41,7 @@
     <div class="component3">
       <button type="submit">
         <strong>
-          Olvido su contraseña?
+          ¿Olvidó su contraseña?
         </strong>
       </button>
     </div>
