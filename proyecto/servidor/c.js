@@ -15,7 +15,7 @@ const conexion = mysql.createConnection({
     host: "localhost",
     user: "root",
     port: "3306",
-    password: "figueroa311",
+    password: "40499335aB",
     database: "practicainicial"
 });
 
@@ -216,7 +216,10 @@ app.get('/obtenerComentarios/:idPublicacion', (request, response) => {
 
 
 app.get('/obtenerPublicaciones', (request, response) => {
-    var miQuery = "SELECT * FROM publicacion;";
+    var miQuery = `
+    SELECT p.idPublicacion, p.mensaje, CONCAT(c.nombres, ' ', c.apellidos) as Catedratico,
+        u.carnet, CONCAT(u.nombres, ' ', u.apellidos) as estudiante FROM publicacion p 
+        inner join Catedratico c inner join usuario u;`;
     conexion.query(miQuery, function (err, result) {
         if (err) {
             throw err;

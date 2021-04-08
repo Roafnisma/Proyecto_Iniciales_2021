@@ -53,31 +53,21 @@ export class PublicacionComponent implements OnInit {
     //alert('antes de llamar al servicio el carnet es: '+this.carne)
     this.servicio.guardarPublicacion(this.cuerpo,this.carne,this.codCat).subscribe(
       res => {
-        var respuesta: string = res["inicio"];
-        console.log("respuesta" + respuesta);
-        if (respuesta == "1") {
-          console.log("hora 7:35 ");
-          alert('Bienvenido')
-          //this.guardarCarne();
-          //this._router.navigate(['pantallaPrincipal']);
-
-          //console.log("ha ingresado correctamente");
-        } else {
-          alert("Credenciales invalidas");
-        }
+        alert('Publicado exitosamente.')
       }, (error) => {
         console.error(error);
       },
     )
 
 
-    alert(cuer);
+    //alert(cuer);
   }
 
   guardarPublicacion2(form:NgForm){
     
     
-    console.log(form.value.cuerpo)  }
+    //console.log(form.value.cuerpo)  
+  }
 
  
 

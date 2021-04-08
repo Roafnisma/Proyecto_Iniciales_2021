@@ -84,7 +84,7 @@ CREATE INDEX `fk_Curso_Catedratico_Catedratico1_idx` ON `PracticaInicial`.`Curso
 -- Table `PracticaInicial`.`Publicacion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PracticaInicial`.`Publicacion` (
-  `idPublicacion` INT NOT NULL,
+  `idPublicacion` INT NOT NULL AUTO_INCREMENT,
   `Mensaje` VARCHAR(45) NULL,
   `Usuario_Carnet` INT NOT NULL,
   `Fecha` DATE NULL,
@@ -128,7 +128,7 @@ CREATE INDEX `fk_Publicacion_Usuario1_idx` ON `PracticaInicial`.`Publicacion` (`
 -- Table `PracticaInicial`.`Comentario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PracticaInicial`.`Comentario` (
-  `idComentario` INT NOT NULL,
+  `idComentario` INT NOT NULL AUTO_INCREMENT,
   `Mensaje` VARCHAR(45) NOT NULL,
   `Publicacion_idPublicacion` INT NOT NULL,
   `Usuario_Carnet` INT NOT NULL,

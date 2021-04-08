@@ -82,7 +82,7 @@ export class usuarioServicio{
     guardarPublicacion(msj:string,carne:number,numCat:number){
         var id=Math.floor(Math.random() * 1000)
         var data: Publicacion=new Publicacion(id,msj,carne,numCat);
-        alert('el carne es: '+carne+'el codigo del cat es: '+data.Catedratico_NoCatedratico)
+        //alert('el carne es: '+carne+'el codigo del cat es: '+data.Catedratico_NoCatedratico)
         //console.log('lo que se esta mandando es: '+data.Nombres)
         return this.http.post<Publicacion>('http://localhost:4000/guardarPublicacion',data,{
             headers:new HttpHeaders({
