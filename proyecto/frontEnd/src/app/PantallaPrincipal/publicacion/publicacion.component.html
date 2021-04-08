@@ -1,0 +1,24 @@
+<link href="publicacion.component.css">
+<body>
+  
+
+    <div *ngFor="let usuario of usuarios"><label>Usuario: {{usuario.Nombres}}</label></div>
+    <hr>
+    <div id="catedratico">
+      <label id="labelcatedratico">Catedratico:{{Nombres}} {{Apellidos}} </label>
+
+    </div>
+    <div id="imagen">
+      <img src="https://lh3.googleusercontent.com/proxy/12uDo74eXqyhtfXVWf7Kf2la0pY-dipVJzlKLUJxJoBx8_arXUgOHlOabpLo-Lhr3WCeD5yn7Al3Ey3UUAY1kfrnpVGQ_BZ0MTAylu2UBEoDaG81mDJl_w" alt="Login" id="imagen1" />
+    </div>
+    <br />
+    <div id="TextBox">
+
+      <textarea id="cuerpo" [(ngModel)]="cuerpo" name="cuerpo" placeholder="Escribe algo sobre {{Nombres}} {{Apellidos}}">{{cuerpo}}</textarea>
+
+    </div>
+    <br />
+    <button (click)="guardarPublicacion(cuerpo)">Publicar</button>
+    <div id="pantallaprincipal"><a href="pantallaPrincipal" id="letras">Pantalla Principal</a></div>
+  
+</body>

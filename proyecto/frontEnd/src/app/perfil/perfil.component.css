@@ -1,0 +1,33 @@
+p {
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(53, 95, 158);
+    color:white;
+    font-size: 40px;
+    font-weight: normal;
+      
+  }
+  label {
+    font-family: "Consolas", monospace;
+    font-size: x-large;
+    font-size: 20px;
+    color: rgb(248, 239, 239);
+    margin-left: 10px;
+}
+a {
+    font-family: "Consolas", monospace;
+    font-size: 25px;
+    color:cornflowerblue;
+    margin-left: 1200px;
+    left:75%;
+}
+
+body {
+    background-attachment: fixed;
+    image-orientation: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(https://www.solucioneshipermedia.com/wp-content/uploads/programacion-de-diseno-web-1024x576.jpg);
+    background-size: cover;
+
+}

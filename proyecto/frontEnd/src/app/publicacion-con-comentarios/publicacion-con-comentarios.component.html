@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css">
+</head>
+<body>
+    <p>
+        Comentarios
+    </p>
+    <a href="/publicaciones">Regresar</a>
+    <div *ngFor= "let usuario of usuarios"><label>
+         Usuario:{{usuario.Nombres}}</label></div>
+
+    <div *ngFor= "let catedratico of catedraticos"><label>
+        Catedratico: {{catedratico.Nombres}}</label></div>
+
+    <div><label>Publicacion:{{mensaje}}</label></div>
+    <br>
+    <div>
+        <a3><textarea id="cuerpo" [(ngModel)]="cuerpo" name="cuerpo" rows="4" cols="50">{{cuerpo}}</textarea></a3>
+
+    </div>
+    <br>
+    <a3><button (click)="guardarComentario(cuerpo)">Comentar</button></a3>
+    <a3><button (click)="verPerfil()">Ver Perfil</button></a3>
+
+    <h4>Comentarios</h4>
+    <div class="container"><table class="table table-striped">
+        <tr *ngFor="let comentario of comentarios">
+            <tbody>
+                <td>
+                    <label>Usuario: {{comentario.Usuario_Carnet}}</label>
+                    
+                    <p> {{comentario.Mensaje}}</p>
+                    </td>
+            </tbody>
+        </tr>
+    </table>
+
+
+
+    
+    </div>
+</body>
+</html>

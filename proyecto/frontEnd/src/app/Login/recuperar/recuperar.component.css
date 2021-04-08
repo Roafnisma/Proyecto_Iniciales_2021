@@ -1,0 +1,85 @@
+button {
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #3a4d6d;
+  border-radius: 6px;
+  border: 2px solid #3a4d6d;
+  position: relative;
+  left: 37%;
+}
+
+  button:hover {
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    color: white;
+}
+#contain {
+  position: absolute;
+  top: 10 %;
+  left: 30%;
+  width: 40%;
+  -webkit-box-shadow: 37px 22px 29px 10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 37px 22px 29px 10px rgba(0,0,0,0.75);
+  box-shadow: 37px 22px 29px 10px rgba(0,0,0,0.75);
+  color: white;
+  background-color: #054555;
+  opacity: 95%;
+}
+p {
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: lightgreen;
+}
+
+.component {
+  text-align-last: center;
+  color: white;
+  position: relative;
+  left: 10%;
+  width: 80%;
+  height: 10%;
+}
+.TextBox {
+  color: white;
+  background-color: grey;
+  width: 100%;
+}
+
+input {
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
+
+input {
+    background-color: white;
+    
+    
+}
+
+body {
+    background-attachment: fixed;
+    image-orientation: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(https://i.pinimg.com/originals/50/d2/d1/50d2d14257467738e94c996e022672b4.jpg);
+}
+
+h1 {
+    background-color:#054555;
+    border-color: #054555;
+    border-width: 4px;
+    border-style: solid;
+    color: white;
+}
