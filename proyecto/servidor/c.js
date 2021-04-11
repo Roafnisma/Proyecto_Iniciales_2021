@@ -22,7 +22,7 @@ const conexion = mysql.createConnection({
 function getprueba() {
     var miQuery = "SELECT * FROM PRUEBA;"
     conexion.query(miQuery, function (err, result) {
-        if (err) { throw err; } else {
+        if (err) { console.log(err); } else {
             console.log(result);
             return result;
         }
@@ -32,7 +32,7 @@ function getprueba() {
 app.get('/prueba', (request, response) => {
     var miQuery = 'Select *from prueba;';
     conexion.query(miQuery, function (err, result) {
-        if (err) { throw err; } else {
+        if (err) { console.log(err); } else {
             //console.log(result);
             response.send(result);
         }
@@ -54,7 +54,7 @@ app.post('/agregarUsuario', (request, response) => {
     console.log(miQuery);
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -64,6 +64,37 @@ app.post('/agregarUsuario', (request, response) => {
     })
 })
 
+
+
+app.post('/agregarCursoAprobado', (request, response) => {
+    var codigoCurso = request.body.codigocurso;
+    var carnet = request.body.carnet; 
+    var nota = request.body.nota;
+    
+    var miQuery = `INSERT INTO CURSOSAPROBADOS (CarnetU, CodigoCurso, NotaAprobada) 
+        values (${carnet}, ${codigoCurso}, ${nota});
+    `;
+
+    console.log(miQuery);
+    try{
+        conexion.query(miQuery, function (err, result) {
+            if (err) {
+                response.send({mensaje: 'Este curso ya está marcado como aprobado.'})
+                console.log(err);
+                return; 
+            } else {
+                console.log(result);
+                response.send({mensaje: 'Curso marcado como aprobado.'});
+                //console.log('se agrego el registro correctamente hora:11:57')
+    
+            }
+        })
+    }catch(exception){
+        console.log(exception);
+    }
+    
+})
+
 app.post('/guardarPublicacion', (request, response) => {
     var idPublicacion = request.body.idPublicacion;
     var mensaje = request.body.Mensaje;
@@ -71,15 +102,12 @@ app.post('/guardarPublicacion', (request, response) => {
     var numCat = request.body.Catedratico_NoCatedratico;
 
     console.log('el nombre es:');
-
-    var miQuery = "INSERT INTO publicacion (idPublicacion, Mensaje, Usuario_carnet,Catedratico_NoCatedratico) VALUES(" +
-        idPublicacion + ", \'" + mensaje + "\'," + usuarioCarne +
-        "," + numCat + ");";
-
+    var miQuery = "INSERT INTO publicacion (Mensaje, Usuario_carnet,Catedratico_NoCatedratico, Fecha) VALUES(\'" 
+        + mensaje + "\', " + usuarioCarne +", " + numCat + ", CURDATE());";
     console.log(miQuery);
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -97,13 +125,12 @@ app.post('/guardarComentario', (request, response) => {
 
     console.log('el nombre es:');
 
-    var miQuery = "INSERT INTO comentario (idComentario,Mensaje, Publicacion_idPublicacion,Usuario_Carnet) VALUES("+
-        idComentario+",\""+mensaje+"\","+numPubli+","+usuarioCarne+");"
+    var miQuery = "INSERT INTO comentario (Mensaje, Publicacion_idPublicacion,Usuario_Carnet) VALUES(\""+mensaje+"\","+numPubli+","+usuarioCarne+");"
 
     console.log(miQuery);
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -124,7 +151,7 @@ app.post('/validarCredenciales', (request, response) => {
 
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result[0].inicio);
             response.send(result[0]);
@@ -144,7 +171,7 @@ app.post('/validarCorreo', (request, response) => {
 
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
 
 
@@ -166,7 +193,7 @@ app.post('/CambioPassword', (request, response) => {
 
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             response.send('1');
         }
@@ -178,7 +205,7 @@ app.get('/obtenerUsuarios', (request, response) => {
     var miQuery = "SELECT * FROM Usuario;";
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -190,7 +217,7 @@ app.get('/obtenerCursos', (request, response) => {
     var miQuery = "SELECT * FROM curso;";
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -202,16 +229,93 @@ app.get('/obtenerCursos', (request, response) => {
 
 app.get('/obtenerComentarios/:idPublicacion', (request, response) => {
     var idPublicacion = request.params.idPublicacion;
-    var miQuery = "SELECT * FROM comentario where Publicacion_idPublicacion="+idPublicacion+";";
+    var miQuery = `SELECT c.idComentario, c.Mensaje, CONCAT(u.Nombres, ' ', u.Apellidos) as nombreUsuario 
+                        from Comentario c inner join usuario u on c.usuario_carnet = u.carnet 
+                        inner join publicacion p on c.Publicacion_idPublicacion = p.idPublicacion
+                        where p.idPublicacion = ${idPublicacion}
+                        order by c.idComentario asc;`
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
         }
     })
 })
+
+app.get('/obtenerCatedraticosPorCurso/:idCurso', (request, response) => {
+    var idCurso = request.params.idCurso;
+    var miQuery = `select cc.catedratico_nocatedratico as idCatedratico, c.Nombres, c.Apellidos
+        from curso_catedratico cc 
+        inner join catedratico c on cc.catedratico_nocatedratico = c.NoCatedratico
+        where cc.curso_codigocurso = ${idCurso};`
+    conexion.query(miQuery, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            response.send(result);
+        }
+    })
+})
+
+
+
+
+app.get('/obtenerTodasLasPublicaciones', (request, response) => {
+    console.log("holi");
+    var idCatedratico = request.params.idCatedratico;
+    var miQuery = `SELECT distinct p.idPublicacion, p.mensaje, CONCAT(c.nombres, ' ', c.apellidos) as catedratico, p.fecha,
+	                u.carnet, CONCAT(u.nombres, ' ', u.apellidos) as estudiante FROM publicacion p 
+                    inner join Catedratico c on c.NoCatedratico = p.Catedratico_NoCatedratico 
+                    inner join usuario u on u.Carnet = p.Usuario_Carnet order by p.idPublicacion desc;`;
+    conexion.query(miQuery, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            response.send(result);
+        }
+    })
+})
+
+app.get('/obtenerPublicaciones/:idCatedratico', (request, response) => {
+    var idCatedratico = request.params.idCatedratico;
+    var miQuery = `SELECT distinct p.idPublicacion, p.mensaje, CONCAT(c.nombres, ' ', c.apellidos) as catedratico, p.fecha,
+	                u.carnet, CONCAT(u.nombres, ' ', u.apellidos) as estudiante FROM publicacion p 
+                    inner join Catedratico c on c.NoCatedratico = p.Catedratico_NoCatedratico 
+                    inner join usuario u on u.Carnet = p.Usuario_Carnet where c.NoCatedratico = ${idCatedratico};`;
+    conexion.query(miQuery, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            response.send(result);
+        }
+    })
+})
+
+
+
+app.get('/obtenerPublicacionPorId/:idPublicacion', (request, response) => {
+    var idPublicacion = request.params.idPublicacion;
+    var miQuery = `SELECT distinct p.idPublicacion, p.mensaje, CONCAT(c.nombres, ' ', c.apellidos) as catedratico, p.fecha,
+	                u.carnet, CONCAT(u.nombres, ' ', u.apellidos) as estudiante FROM publicacion p 
+                    inner join Catedratico c on c.NoCatedratico = p.Catedratico_NoCatedratico 
+                    inner join usuario u on u.Carnet = p.Usuario_Carnet where p.idPublicacion = ${idPublicacion};`;
+    conexion.query(miQuery, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            response.send(result);
+        }
+    })
+})
+
+
+
 
 
 
@@ -222,7 +326,7 @@ app.get('/obtenerPublicaciones', (request, response) => {
         inner join Catedratico c inner join usuario u;`;
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -238,7 +342,7 @@ app.get('/obtenerUsuario/:carne', (request, response) => {
     var miQuery = "SELECT * FROM usuario where carnet=" + carne + ";";
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -253,7 +357,7 @@ app.get('/obtenerUnSoloCatedratico/:noCat', (request, response) => {
     var miQuery = "SELECT * FROM catedratico where NoCatedratico=" + noCat + ";";
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -265,7 +369,7 @@ app.get('/obtenerCatedratico', (request, response) => {
     var miQuery = "SELECT * FROM Catedratico;";
     conexion.query(miQuery, function (err, result) {
         if (err) {
-            throw err;
+            console.log(err);
         } else {
             console.log(result);
             response.send(result);
@@ -277,4 +381,21 @@ app.listen(4000, () => {
 
     console.log("backend inicializado, en el puerto 4000");
 })
+
+
+app.get('/obtenerCursosAprobados/:carnet', (request, response) => {
+    var carnet = request.params.carnet;
+    var miQuery = `select  ca.codigocurso, c.nombre, ca.notaaprobada 
+        from cursosaprobados ca inner join curso c on ca.codigocurso = c.codigocurso
+        where ca.carnetU = ${carnet}; `
+    conexion.query(miQuery, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            response.send(result);
+        }
+    })
+})
+
 

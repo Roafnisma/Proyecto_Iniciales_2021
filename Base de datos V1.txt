@@ -85,7 +85,7 @@ CREATE INDEX `fk_Curso_Catedratico_Catedratico1_idx` ON `PracticaInicial`.`Curso
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PracticaInicial`.`Publicacion` (
   `idPublicacion` INT NOT NULL AUTO_INCREMENT,
-  `Mensaje` VARCHAR(45) NULL,
+  `Mensaje` VARCHAR(1000) NULL,
   `Usuario_Carnet` INT NOT NULL,
   `Fecha` DATE NULL,
   `Curso_Catedratico_idCatedraticoCurso` INT NULL,
@@ -129,7 +129,7 @@ CREATE INDEX `fk_Publicacion_Usuario1_idx` ON `PracticaInicial`.`Publicacion` (`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PracticaInicial`.`Comentario` (
   `idComentario` INT NOT NULL AUTO_INCREMENT,
-  `Mensaje` VARCHAR(45) NOT NULL,
+  `Mensaje` VARCHAR(1000) NOT NULL,
   `Publicacion_idPublicacion` INT NOT NULL,
   `Usuario_Carnet` INT NOT NULL,
   PRIMARY KEY (`idComentario`),
@@ -174,23 +174,24 @@ CREATE INDEX `fk_PensumSistemas_Curso1_idx` ON `PracticaInicial`.`PensumSistemas
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PracticaInicial`.`CursosAprobados` (
   `CarnetU` INT NOT NULL,
-  `CursoP` INT NOT NULL,
+  `CodigoCurso` INT NOT NULL,
   `NotaAprobada` INT NOT NULL,
   CONSTRAINT `fk_CursosAprobados_Usuario`
     FOREIGN KEY (`CarnetU`)
     REFERENCES `PracticaInicial`.`Usuario` (`Carnet`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CursosAprobados_PensumSistemas1`
-    FOREIGN KEY (`CursoP`)
-    REFERENCES `PracticaInicial`.`PensumSistemas` (`idCursoPensum`)
+  CONSTRAINT `fk_CursosAprobados_Curso`
+    FOREIGN KEY (`CodigoCurso`)
+    REFERENCES `PracticaInicial`.`curso` (`CodigoCurso`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  PRIMARY KEY(CarnetU, CodigoCurso))
 ENGINE = InnoDB;
 
 CREATE INDEX `fk_CursosAprobados_Usuario_idx` ON `PracticaInicial`.`CursosAprobados` (`CarnetU` ASC) VISIBLE;
 
-CREATE INDEX `fk_CursosAprobados_PensumSistemas1_idx` ON `PracticaInicial`.`CursosAprobados` (`CursoP` ASC) VISIBLE;
+CREATE INDEX `fk_CursosAprobados_Curso_idx` ON `PracticaInicial`.`CursosAprobados` (`CodigoCurso` ASC) VISIBLE;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
