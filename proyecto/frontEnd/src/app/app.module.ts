@@ -30,12 +30,12 @@ const Rutas:Routes=[
   {path:'pantallaPrincipal',component:PantallaPrincipalComponent},{
     path:'recuperarPassword', component: RecuperarComponent
   },
-  {path:'publicaciones',component:PublicacionesComponent},
+  {path:'publicaciones/:idCatedratico',component:PublicacionesComponent},
   {path:'publicacion',component:PublicacionComponent},
   {path:'nuevopassword', component: NuevopasswordComponent},
   {path:'acordion',component:AcordionComponent},
   {path:'perfil',component:PerfilComponent},
-  {path:'publicacionConComentarios',component:PublicacionConComentariosComponent},
+  {path:'publicacionConComentarios/:idPublicacion',component:PublicacionConComentariosComponent},
   {path:'buscarCurso',component:BuscarCursoComponent}
 
 

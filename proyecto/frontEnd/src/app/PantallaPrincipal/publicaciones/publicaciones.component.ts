@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{Publicacion} from '../../Modelos/Publicacion'
 import {usuarioServicio} from '../../servicios/usuarioServicio'
-import {Router} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 
 @Component({
   selector: 'app-publicaciones',
@@ -10,29 +10,56 @@ import {Router} from '@angular/router'
 })
 export class PublicacionesComponent implements OnInit {
 
-  constructor(private servicio:usuarioServicio,private _router:Router) { }
+  constructor(private servicio:usuarioServicio,private _router:Router, private route: ActivatedRoute) { }
 
   publicaciones:Publicacion[]=[];
 
   ngOnInit(): void {
-
-    this.servicio.obtenerPublicaciones().subscribe(publicaciones=>this.publicaciones=publicaciones);
-
+    let idCatedratico = Number(this.route.snapshot.paramMap.get("idCatedratico"));
+    if(idCatedratico == -1){
+      this.servicio.obtenerTodasPublicaciones(idCatedratico).subscribe(
+        (result:any[])=>{
+          console.log(result);
+          for(let publicacion of result){
+            let nuevaPublicacion = new Publicacion(publicacion.idPublicacion, publicacion.mensaje, 
+              publicacion.carnet, -1);
+            nuevaPublicacion.fecha  = publicacion.fecha.split('T')[0];
+            nuevaPublicacion.nombreUsuario = publicacion.estudiante;
+            nuevaPublicacion.nombreCatedratico = publicacion.catedratico;
+            this.publicaciones.push(nuevaPublicacion);
+          }
+        },
+        (error)=>{
+          console.log(error);
+          alert('Error al contactar con el servidor');
+        });
+  
+    }else{
+      this.servicio.obtenerPublicacionesPorCatedratico(idCatedratico).subscribe(
+        (result:any[])=>{
+          console.log(result);
+          for(let publicacion of result){
+            let nuevaPublicacion = new Publicacion(publicacion.idPublicacion, publicacion.mensaje, 
+              publicacion.carnet, -1);
+            nuevaPublicacion.fecha  = publicacion.fecha;
+            nuevaPublicacion.nombreUsuario = publicacion.estudiante;
+            nuevaPublicacion.nombreCatedratico = publicacion.catedratico;
+            this.publicaciones.push(nuevaPublicacion);
+          }
+        },
+        (error)=>{
+          console.log(error);
+          alert('Error al contactar con el servidor');
+        }
+  
+      )
+    }
+    
 
   }
 
   verComentarios(idPublicacion:number,NoCatedratico:number,Mensaje:string,carne_publicacion:number){
-    
-    let idPublicacionS:string=idPublicacion+"";
-    let NoCatedraticoS:string=NoCatedratico+"";
-    let Mensaje2:string=Mensaje;
-    let carne_publicacion2=carne_publicacion+"";
-    localStorage.setItem("idPublicacion",idPublicacionS);
-    localStorage.setItem("NoCatedratico",NoCatedraticoS);
-    localStorage.setItem("Mensaje",Mensaje2);
-    localStorage.setItem("carne_publicacion",carne_publicacion2);
-    this._router.navigate(['publicacionConComentarios']);
-
+    this._router.navigate(['publicacionConComentarios', idPublicacion]);
   }
 
 }

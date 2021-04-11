@@ -3,7 +3,7 @@ import { Catedratico } from '../Modelos/Catedratico';
 import { Usuario } from '../Modelos/Usuario';
 import { Comentario } from '../Modelos/Comentario';
 import {usuarioServicio}from '../servicios/usuarioServicio'
-import {Router} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 
 @Component({
   selector: 'app-publicacion-con-comentarios',
@@ -15,44 +15,74 @@ export class PublicacionConComentariosComponent implements OnInit {
   cuerpo:string;
   usuarios:Usuario[]=[]
   comentarios:Comentario[]=[]
-  
+  publicacion: string; 
+  nombreCatedratico:string; 
+  nombreUsuario: string;
+  idPublicacion: number; 
   catedraticos:Catedratico[]=[]
-
-  constructor(private servicioUsuario:usuarioServicio, private _router:Router) { }
+  fecha: string; 
+  constructor(private servicioUsuario:usuarioServicio, private _router:Router, 
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.nombreCatedratico ="";
+    this.nombreUsuario ="";
+    this.publicacion = "";
+    this.fecha = "";
+    this.idPublicacion = 0;
     let carne=localStorage.getItem("carne_publicacion")
-    let NoCat=localStorage.getItem("NoCatedratico")
-    let NoPublicacion=Number(localStorage.getItem("idPublicacion"))
-    let NoCat2=Number(NoCat)
-    let carne2=Number(carne)
-    this.servicioUsuario.obtenerComentarios(NoPublicacion).subscribe(comentario=>this.comentarios=comentario)
-    this.servicioUsuario.obtenerUsuario(carne2).subscribe(usuario=>this.usuarios=usuario)
-    this.servicioUsuario.obtenerUnSoloCatedratico(NoCat2).subscribe(catedratico=>this.catedraticos=catedratico)
-    //this.usuario=this.usuarios[0].Nombres
-    this.mensaje=localStorage.getItem("Mensaje");
+    let idPublicacion = Number(this.activatedRoute.snapshot.paramMap.get("idPublicacion"));
+
+    this.servicioUsuario.obtenerPublicacionPorId(idPublicacion).subscribe(
+      (result:any[])=>{
+        console.log(result);
+        this.nombreCatedratico = result[0].catedratico; 
+        this.nombreUsuario = result[0].estudiante; 
+        this.publicacion = result[0].mensaje;
+        this.fecha = result[0].fecha; 
+        this.idPublicacion = result[0].idPublicacion;
+        this.chargeComments();
+      }, 
+      (error)=>{
+        console.log(error);
+        alert("Error al conectarse con el servidor")
+      }      
+    ); 
+
+  }
+
+  chargeComments(){
+    let idPublicacion = Number(this.activatedRoute.snapshot.paramMap.get("idPublicacion"));
+    this.servicioUsuario.obtenerComentarios(idPublicacion).subscribe(
+      
+      (result:any[])=>{
+        console.log(result);
+        this.comentarios = [];
+        for(let comment of result){
+          let comentario = new Comentario(comment.idComentario, comment.Mensaje, comment.idPublicacion, 
+            0);
+          comentario.nombreUsuario = comment.nombreUsuario; 
+          this.comentarios.push(comentario);
+        }
+      },
+      (error)=>{
+        console.log(error);
+        alert("Ocurrió un error de conexión con el servidor.");
+      }
+    )
   }
 
   guardarComentario(cuerpo:string){
-    
-    
-    this.servicioUsuario.guardarComentario(cuerpo,Number(localStorage.getItem("idPublicacion")),Number(localStorage.getItem("carne"))).subscribe(
-      res => {
-        var respuesta: string = res["inicio"];
-        console.log("respuesta" + respuesta);
-        if (respuesta == "1") {
-          console.log("hora 7:35 ");
-          alert('Bienvenido')
-          //this.guardarCarne();
-          //this._router.navigate(['pantallaPrincipal']);
+    let idPublicacion = Number(this.activatedRoute.snapshot.paramMap.get("idPublicacion"));
 
-          //console.log("ha ingresado correctamente");
-        } else {
-          alert("Credenciales invalidas");
-          window.location.reload()
-        }
+    
+    this.servicioUsuario.guardarComentario(cuerpo, idPublicacion, Number(localStorage.getItem("carne_publicacion"))).subscribe(
+      (res:any) => {
+        this.chargeComments();
       }, (error) => {
         console.error(error);
+        alert("Ocurrió un error al conectar con el servidor.");
+
       },
     )
 

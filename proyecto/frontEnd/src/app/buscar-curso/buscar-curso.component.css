@@ -72,7 +72,7 @@ table {
     font-family: "Consolas", monospace;
     font-size: 20px;
     color: white;
-    
+    height: 700px;
 }
 
 #boton {
@@ -118,9 +118,13 @@ textarea {
 .col {
     position:relative;
 
- height:300px;
+ height:500px;
   overflow: auto;
 }
 .col1 {
     width:100%;
+}
+
+.container{
+    height: 680px;
 }

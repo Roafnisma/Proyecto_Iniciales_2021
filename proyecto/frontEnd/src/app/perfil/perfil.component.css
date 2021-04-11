@@ -31,3 +31,12 @@ body {
     background-size: cover;
 
 }
+
+table{
+    color: white;
+}
+
+.container{
+    height: 530px;
+    overflow-y: scroll;
+}

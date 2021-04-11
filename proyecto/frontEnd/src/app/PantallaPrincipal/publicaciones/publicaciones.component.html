@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css">
 </head>
+
 <body>
     <div>
         <strong>
-          <p>
-           Publicaciones
-          </p>
+            <p>
+                Publicaciones
+            </p>
         </strong>
-      </div>
+    </div>
     <a href="/pantallaPrincipal">Pantalla principal</a>
-    <div class="container">
-    <table class="table table-striped">
-    <tr *ngFor="let publicacion of publicaciones">
-        <tbody>
-            <td>
-                
-                <label>Usuario: {{publicacion.Usuario_Carnet}}</label>
-                <div>Catedratico: {{publicacion.Catedratico_NoCatedratico}}</div>
-                <h2> {{publicacion.Mensaje}}</h2>
-                <button (click)="verComentarios(publicacion.idPublicacion,publicacion.Catedratico_NoCatedratico,publicacion.Mensaje,publicacion.Usuario_Carnet)">Ver Comentarios</button>
-            </td>
-        </tbody>
-    </tr>
-    </table>
-    
-</div>
+    <div class="container c1">
+        <table class="table table-striped">
+            <tr *ngFor="let publicacion of publicaciones">
+                <tbody>
+                    <td>
+
+                        <label>Usuario: {{publicacion.nombreUsuario}}</label>
+                        <div>Catedratico: {{publicacion.nombreCatedratico}}</div>
+                        <div>Fecha: {{publicacion.fecha}}</div>
+                        <h2> {{publicacion.Mensaje}}</h2>
+                        <button
+                            (click)="verComentarios(publicacion.idPublicacion,publicacion.Catedratico_NoCatedratico,publicacion.Mensaje,publicacion.Usuario_Carnet)">Ver
+                            Comentarios</button>
+                    </td>
+                </tbody>
+            </tr>
+        </table>
+
+    </div>
 </body>
+
 </html>

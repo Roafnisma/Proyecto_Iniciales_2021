@@ -14,7 +14,7 @@ export class PerfilComponent implements OnInit {
   Apellidos:String;
   Correo:String;
   usuarios:Usuario[]=[];
-  
+  cursosAprobados:any[] = [];
   constructor(private router_:Router, private servicio:usuarioServicio) { }
   filterPost='';
 
@@ -27,6 +27,15 @@ export class PerfilComponent implements OnInit {
   obtenerLocalStorage(){
     let carne=Number(localStorage.getItem("carne_publicacion"))
     this.servicio.obtenerUsuario(carne).subscribe(usuario=>this.usuarios=usuario);
+    this.servicio.getCursosAProbados(carne).subscribe(
+      (result)=>{
+        console.log(result);
+        this.cursosAprobados = result;
+      }
+      ,(error)=>{
+        console.log(error);
+      }
+    )
     //let carne=localStorage.getItem("carne")
     //let persona=JSON.parse(localStorage.getItem("persona"))
     //this.carne=parseInt(carne);

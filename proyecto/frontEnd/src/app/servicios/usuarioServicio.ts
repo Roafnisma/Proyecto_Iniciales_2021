@@ -116,5 +116,28 @@ export class usuarioServicio{
         return this.http.get<Publicacion[]>('http://localhost:4000/obtenerPublicaciones');
     }
 
+    
+    obtenerTodasPublicaciones(idCatedratico):Observable<Publicacion[]>{
+        return this.http.get<Publicacion[]>('http://localhost:4000/obtenerTodasLasPublicaciones');
+    }
+
+    obtenerPublicacionesPorCatedratico(idCatedratico):Observable<Publicacion[]>{
+        return this.http.get<Publicacion[]>('http://localhost:4000/obtenerPublicaciones/'+idCatedratico);
+    }
+
+    
+    obtenerPublicacionPorId(idPublicacion):Observable<Publicacion[]>{
+        return this.http.get<Publicacion[]>('http://localhost:4000/obtenerPublicacionPorId/'+idPublicacion);
+    }
+
+    marcarCursoComoAprobado(carnet, idCurso, nota):Observable<any>{
+        return this.http.post<any>('http://localhost:4000/agregarCursoAprobado', {carnet: carnet, codigocurso: idCurso, nota: nota});
+
+    }
+
+    
+    getCursosAProbados(carnet):Observable<any>{
+        return this.http.get<any>('http://localhost:4000/obtenerCursosAprobados/' +carnet);
+    }
 
 }

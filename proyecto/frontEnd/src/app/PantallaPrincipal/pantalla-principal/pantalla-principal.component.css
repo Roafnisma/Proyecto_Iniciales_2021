@@ -124,9 +124,13 @@ textarea {
 .col {
     position:relative;
 
- height:300px;
+ height:350px;
   overflow: auto;
 }
 .col1 {
     width:100%;
+}
+
+.container{
+    height: 720px;
 }

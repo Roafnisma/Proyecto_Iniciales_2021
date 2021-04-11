@@ -42,6 +42,10 @@ export class PantallaPrincipalComponent implements OnInit {
 
   }
 
+  verOpiniones(idCat: number){
+    this.router_.navigate(['publicaciones/', idCat]);
+  }
+
   buscarCursos(){
     this.router_.navigate(['buscarCurso'])
   }

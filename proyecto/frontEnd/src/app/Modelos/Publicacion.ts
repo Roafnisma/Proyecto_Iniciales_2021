@@ -3,6 +3,9 @@ export class Publicacion{
     Mensaje: String;
     Usuario_Carnet: number;
     Catedratico_NoCatedratico:number;
+    nombreUsuario: string; 
+    fecha: string; 
+    nombreCatedratico: string;
 
     constructor(id:number, msj:string, carne:number,numcat:number){
        this.idPublicacion=id;

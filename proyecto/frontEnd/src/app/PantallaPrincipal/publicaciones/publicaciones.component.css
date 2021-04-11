@@ -125,3 +125,12 @@ textarea {
 .col1 {
     width:100%;
 }
+
+.c1{
+    overflow-y: scroll;
+    height: 550px;
+}
+
+.container{
+    height: 660px;
+}

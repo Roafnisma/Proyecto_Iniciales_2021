@@ -3,6 +3,7 @@ export class Comentario{
     Mensaje: String;
     Publicacion_idPublicacion: Number;
     Usuario_Carnet:Number;
+    nombreUsuario: string; 
 
     constructor(idComentario:Number,Mensaje:string, Publicacion_idPublicacion:Number,Usuario_Carnet:Number){
         this.idComentario=idComentario
