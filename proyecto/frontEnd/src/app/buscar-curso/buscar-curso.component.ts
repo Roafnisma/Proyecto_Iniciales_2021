@@ -10,7 +10,9 @@ import { Curso } from '../Modelos/Curso'
 })
 export class BuscarCursoComponent implements OnInit {
   cursos: Curso[] = []
-  filterPost = ''
+  catedraticosDelCurso:any[] = [];
+  filterPost = '';
+  cursoSeleccionado = '';
 
   constructor(private _router: Router, private servicio: usuarioServicio) { }
 
@@ -44,6 +46,44 @@ export class BuscarCursoComponent implements OnInit {
       }
     );
 
+  }
+
+  verCatedraticos(idCurso, nombreCurso){
+    this.cursoSeleccionado = nombreCurso;
+    this.servicio.getCatedraticosPorCurso(idCurso).subscribe(
+      (result)=>{
+        this.catedraticosDelCurso = result;
+        console.log(result)
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  
+  publicar(NoCatedratico:number,Nombres:string,Apellidos:string){
+    let carne=localStorage.getItem("carne")
+
+    //alert('los datos son:'+Nombres+Apellidos+NoCatedratico.toString());
+    let info={
+      nombres:Nombres,
+      apellidos:Apellidos,
+      noCat:NoCatedratico,
+      carneUsuario:carne,
+      coords:{lat:10,lng:-10}
+
+
+    }
+
+    localStorage.setItem("info",JSON.stringify(info))
+    this._router.navigate(['publicacion'])
+
+
+  }
+
+  verOpiniones(idCat: number){
+    this._router.navigate(['publicaciones/', idCat]);
   }
 
 }

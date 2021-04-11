@@ -118,13 +118,20 @@ textarea {
 .col {
     position:relative;
 
- height:500px;
+ height:380px;
   overflow: auto;
+  margin-bottom: 50px;
 }
 .col1 {
     width:100%;
 }
 
 .container{
-    height: 680px;
+    height: 1400px;
+}
+
+.tabla-titulo{
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 28px;
 }

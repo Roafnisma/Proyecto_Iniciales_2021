@@ -34,15 +34,17 @@
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Codigo</th>
-              <th>Nombre</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
               <th></th>
               <th></th>
+ 
             </tr>
           </thead>
           <tbody>
@@ -50,10 +52,36 @@
               <td>{{curso.CodigoCurso}}</td>
               <td>{{curso.Nombre}}</td>
               <td><button
-                  (click)="publicar(catedratico.NoCatedratico,catedratico.Nombres,catedratico.Apellidos)">Catedráticos</button>
+                  (click)="verCatedraticos(curso.CodigoCurso, curso.Nombre)">Ver Catedráticos</button>
               </td>
               <td><button (click)="agregarAAprobados(curso.CodigoCurso)">Agregar a Cursos Aprobados</button></td>
 
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h1 class="tabla-titulo">Catedraticos que imparten el curso: <br/> {{cursoSeleccionado}}</h1>
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombres</th>
+              <th>Aepllidos</th>
+              <th>Opiniones</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let catedratico of catedraticosDelCurso">
+              <td>{{catedratico.Nombres}}</td>
+              <td>{{catedratico.Apellidos}}</td>
+              <td><button (click)="verOpiniones(catedratico.idCatedratico)">Ver Opiniones</button></td>
+              <td><button (click)="publicar(catedratico.idCatedratico,catedratico.Nombres,catedratico.Apellidos)">Publicar</button></td>
+              
             </tr>
           </tbody>
         </table>

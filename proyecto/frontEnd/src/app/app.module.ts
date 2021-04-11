@@ -21,6 +21,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { PublicacionConComentariosComponent } from './publicacion-con-comentarios/publicacion-con-comentarios.component';
 import { BuscarCursoComponent } from './buscar-curso/buscar-curso.component';
 import { FiltroCursoPipe } from './pipes/filtro-curso.pipe';
+import { CatedraticosPorCursoComponent } from './catedraticos-por-curso/catedraticos-por-curso.component';
 
 const Rutas:Routes=[
 
@@ -36,7 +37,9 @@ const Rutas:Routes=[
   {path:'acordion',component:AcordionComponent},
   {path:'perfil',component:PerfilComponent},
   {path:'publicacionConComentarios/:idPublicacion',component:PublicacionConComentariosComponent},
-  {path:'buscarCurso',component:BuscarCursoComponent}
+  {path:'buscarCurso',component:BuscarCursoComponent},
+  {path:'catedraticos-por-curso:/idCurso', component:CatedraticosPorCursoComponent}
+
 
 
 ]
@@ -56,7 +59,8 @@ const Rutas:Routes=[
     PerfilComponent,
     PublicacionConComentariosComponent,
     BuscarCursoComponent,
-    FiltroCursoPipe
+    FiltroCursoPipe,
+    CatedraticosPorCursoComponent
   ],
   imports: [
     BrowserModule,

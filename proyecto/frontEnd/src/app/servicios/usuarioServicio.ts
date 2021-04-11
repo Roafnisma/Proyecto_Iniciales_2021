@@ -132,7 +132,11 @@ export class usuarioServicio{
 
     marcarCursoComoAprobado(carnet, idCurso, nota):Observable<any>{
         return this.http.post<any>('http://localhost:4000/agregarCursoAprobado', {carnet: carnet, codigocurso: idCurso, nota: nota});
+    }
 
+    
+    getCatedraticosPorCurso( idCurso):Observable<any>{
+        return this.http.get<any>('http://localhost:4000/obtenerCatedraticosPorCurso/'+idCurso);
     }
 
     
